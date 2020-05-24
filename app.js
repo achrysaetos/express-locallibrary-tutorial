@@ -4,6 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//Connects to MongoDB
+var mongoose = require("mongoose");//imports the mongoose module
+var mongoDB = "mongodb+srv://achrysaetos:sempiternal@cluster0-jjeek.mongodb.net/local_library?retryWrites=true&w=majority";
+mongoose.connect(mongoDB, {useNewUrlParser:true});//sets up the defualt mongoose connection
+var db = mongoose.connection;//gets the default connection
+db.on("error", console.error.bind(console, "MongoDB connection error:"));//binds the connection to error event(to get notified)
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
