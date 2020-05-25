@@ -13,3 +13,6 @@ in the same way as our Book update page.
 
 Key Ideas:
 Most of the time, you just change code in the controllers and views directories. Everything else is extremely straightfoward.
+
+DEPLOYED! Go to:
+https://guarded-fjord-01124.herokuapp.com/catalog/books
