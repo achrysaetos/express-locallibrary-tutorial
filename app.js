@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var compression = require("compression");
+var helmet = require("helmet");
 
 //Connects to MongoDB
 var mongoose = require("mongoose");//imports the mongoose module
-var mongoDB = "mongodb+srv://achrysaetos:sempiternal@cluster0-jjeek.mongodb.net/local_library?retryWrites=true&w=majority";
+var dev_db_url = "mongodb+srv://achrysaetos:sempiternal@cluster0-jjeek.mongodb.net/local_library?retryWrites=true&w=majority";
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser:true});//sets up the defualt mongoose connection
 var db = mongoose.connection;//gets the default connection
 db.on("error", console.error.bind(console, "MongoDB connection error:"));//binds the connection to error event(to get notified)
@@ -21,6 +24,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(compression());//compress all routes
+app.use(helmet());//protects from well-known vulnerabilities
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
