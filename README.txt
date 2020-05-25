@@ -4,10 +4,12 @@ Do not forget to remove your database url from app.js and instead set it as an e
 
 Go to: 
 http://localhost:3000/
-http://localhost:3000/catalog
-http://localhost:3000/catalog/books
-http://localhost:3000/catalog/bookinstances/
-http://localhost:3000/catalog/authors/
-http://localhost:3000/catalog/genres/
-http://localhost:3000/catalog/book/5846437593935e2f8c2aa226
-http://localhost:3000/catalog/book/create
+
+Still need to:
+Implement the delete pages for the Book, BookInstance, and Genre models, linking them from the associated detail pages 
+in the same way as our Author delete page. 
+Implement the update pages for the BookInstance, Author, and Genre models, linking them from the associated detail pages 
+in the same way as our Book update page.
+
+Key Ideas:
+Most of the time, you just change code in the controllers and views directories. Everything else is extremely straightfoward.
